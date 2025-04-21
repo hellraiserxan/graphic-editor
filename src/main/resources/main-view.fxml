@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1200.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #37393d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MainController">
+<AnchorPane maxHeight="1200.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #202225;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MainController">
    <children>
-      <AnchorPane layoutX="-1.0" layoutY="-0.8" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #2F3136;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+      <AnchorPane onMousePressed="#handleMousePressed"
+                  onMouseDragged="#handleMouseDragged" layoutX="-1.0" layoutY="-0.8" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #202225;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
             <AnchorPane layoutX="339.0" layoutY="78.0" onMouseClicked="#handleMaximizeButton" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -33,5 +35,11 @@
                </children></AnchorPane>
          </children>
       </AnchorPane>
+      <Canvas fx:id="drawingCanvas"
+              AnchorPane.topAnchor="30.0"
+              AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="50.0"
+              AnchorPane.rightAnchor="0.0"
+      />
    </children>
 </AnchorPane>
