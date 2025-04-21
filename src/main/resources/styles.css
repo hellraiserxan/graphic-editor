@@ -1,0 +1,11 @@
+#closeIcon {
+    -fx-cursor: hand; /* Измените курсор на руку при наведении */
+}
+
+#closeIcon:hover {
+    -fx-background-color: #C41E3A;
+    -fx-opacity: 0.8;
+}
+#closeIcon{
+    -fx-background-color:  #2F3136;
+}

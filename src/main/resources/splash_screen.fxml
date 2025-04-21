@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.Image?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER">
+    <ImageView fitWidth="200" preserveRatio="true" smooth="true">
+        <image>
+            <Image url="@Img/Kaneki_creates_a_Black_Goat_group.png" />
+        </image>
+    </ImageView>
+</StackPane>
