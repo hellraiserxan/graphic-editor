@@ -1,11 +1,48 @@
 #closeIcon {
-    -fx-cursor: hand; /* Измените курсор на руку при наведении */
+    -fx-cursor: hand;
+    fx-background-color:  #2f3136;
 }
 
 #closeIcon:hover {
     -fx-background-color: #C41E3A;
     -fx-opacity: 0.8;
 }
-#closeIcon{
-    -fx-background-color:  #202225;
+
+#maximizeIcon{
+    -fx-cursor: hand;
+    -fx-background-color:  #2f3136;
+}
+
+#maximizeIcon:hover{
+    -fx-background-color: #61646b;
+}
+
+#minimizeIcon{
+    -fx-cursor: hand;
+    -fx-background-color:  #2f3136;
+}
+
+#minimizeIcon:hover{
+     -fx-background-color:  #61646b;
+}
+
+.tool-button {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+    -fx-opacity: 0.7;
+    -fx-background-radius: 6px;
+}
+
+.tool-button:hover {
+    -fx-background-color: #36393f;
+    -fx-opacity: 1.0;
+}
+
+.tool-button.active {
+    -fx-background-color: #43474d;
+    -fx-opacity: 1.0;
+    -fx-border-color: #eaeaeb;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
 }
