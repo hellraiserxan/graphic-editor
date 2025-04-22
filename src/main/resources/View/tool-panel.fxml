@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.ToolController" prefWidth="50.0" style="-fx-background-color: #1cb955;">
+    <children>
+
+        <VBox fx:id="cursorIcon" alignment="CENTER" onMouseClicked="#selectCursorTool" styleClass="tool-button" prefWidth="32.0">
+            <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                <image>
+                    <Image url="@/Img/hand.png" />
+                </image>
+            </ImageView>
+        </VBox>
+
+        <VBox fx:id="pencilIcon" alignment="CENTER" onMouseClicked="#selectPencilTool" styleClass="tool-button" prefWidth="32.0">
+            <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                <image>
+                    <Image url="@/Img/pencil.png" />
+                </image>
+            </ImageView>
+        </VBox>
+
+        <VBox fx:id="eraserIcon" alignment="CENTER" onMouseClicked="#selectEraserTool" styleClass="tool-button" prefWidth="32.0">
+            <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                <image>
+                    <Image url="@/Img/eraser.png" />
+                </image>
+            </ImageView>
+        </VBox>
+    </children>
+</VBox>

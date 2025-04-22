@@ -18,6 +18,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Stage splashStage = new Stage();
         Parent splashRoot = FXMLLoader.load(getClass().getResource("/splash_screen.fxml"));
+
         Scene splashScene = new Scene(splashRoot);
         splashStage.initStyle(StageStyle.UNDECORATED);
         splashStage.setScene(splashScene);
@@ -40,7 +41,7 @@ public class Main extends Application {
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/main-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/main-view.fxml"));
                 Parent mainRoot = loader.load();
 
                 Stage mainStage = new Stage();

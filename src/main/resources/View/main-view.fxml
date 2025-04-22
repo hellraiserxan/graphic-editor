@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.MainController" maxHeight="1200.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #2f3136;">
+   <children>
+
+      <fx:include source="window-controls.fxml" />
+
+      <fx:include fx:id="drawingCanvas" source="drawing-canvas.fxml" />
+
+      <fx:include fx:id="toolPanelInclude" source="tool-panel.fxml" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0"/>
+
+   </children>
+</AnchorPane>
+

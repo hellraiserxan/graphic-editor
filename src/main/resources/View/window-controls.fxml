@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.WindowController" layoutX="-1.0" layoutY="-0.8" onMouseDragged="#handleMouseDragged" onMousePressed="#handleMousePressed" prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #2f3136;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+    <children>
+        <AnchorPane fx:id="maximizeIcon" onMouseClicked="#handleMaximizeButton" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <image>
+                        <Image url="@/Img/fullscreen.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+
+        <AnchorPane fx:id="closeIcon" onMouseClicked="#closeWindow" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <image>
+                        <Image url="@/Img/close.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+
+        <AnchorPane fx:id="minimizeIcon" onMouseClicked="#minimizeWindow" prefHeight="30.0" prefWidth="30.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="-3.0">
+                    <image>
+                        <Image url="@/Img/window.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
+
+
+
