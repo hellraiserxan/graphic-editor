@@ -2,10 +2,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.layout.HBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.MainController" maxHeight="1200.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #2f3136;">
    <children>
 
       <fx:include source="window-controls.fxml" />
+
+      <HBox fx:id="toolSettingsPanel" AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0"
+            prefHeight="50.0" alignment="CENTER_LEFT" spacing="10.0"
+            style="-fx-background-color: #37393f; -fx-padding: 5px;"/>
 
       <fx:include fx:id="drawingCanvas" source="drawing-canvas.fxml" />
 

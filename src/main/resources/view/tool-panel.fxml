@@ -3,7 +3,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.ToolController" prefWidth="50.0" style="-fx-background-color: #1cb955;">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.ToolController" prefWidth="50.0" style="-fx-background-color: #37393f;">
     <children>
 
         <VBox fx:id="cursorIcon" alignment="CENTER" onMouseClicked="#selectCursorTool" styleClass="tool-button" prefWidth="32.0">

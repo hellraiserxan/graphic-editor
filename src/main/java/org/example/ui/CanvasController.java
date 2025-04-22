@@ -18,7 +18,7 @@ public class CanvasController {
     @FXML private Canvas canvas;
     private ToolController toolController;
     private GraphicsContext gc;
-
+    private double pencilSize = 3;
     private double scale = 1;
     private final double scaleIncrement = 0.05;
     private double deltaX = 0;
@@ -28,6 +28,7 @@ public class CanvasController {
 
     private Line currentLine;
     private final List<Line> lines = new ArrayList<>();
+    private int eraserSize;
 
     public CanvasController() {
     }
@@ -90,6 +91,7 @@ public class CanvasController {
             case "pencil":
                 currentLine.addPoint(lastX, lastY);
                 currentLine.addPoint(x, y);
+                gc.setLineWidth(pencilSize);
                 gc.lineTo(x, y);
                 gc.stroke();
                 lastX = x;
@@ -174,4 +176,13 @@ public class CanvasController {
     public void setToolController(ToolController toolController) {
         this.toolController = toolController;
     }
+    public void setPencilSize(Integer size) {
+        if (size != null && size > 0) {
+            this.pencilSize = size;
+            System.out.println("Размер кисти установлен: " + size);
+        }
+    }
+        public void setEraserSize(int eraserSize) {
+            this.eraserSize = eraserSize;
+        }
 }

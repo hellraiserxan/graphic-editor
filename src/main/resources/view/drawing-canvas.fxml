@@ -2,7 +2,7 @@
 <?import javafx.scene.canvas.Canvas?>
 
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.CanvasController" fx:id="canvasContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ui.CanvasController" fx:id="canvasContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
     <children>
         <Canvas fx:id="canvas" onMousePressed="#startDrawing"
                 onMouseDragged="#draw"

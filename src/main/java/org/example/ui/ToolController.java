@@ -1,5 +1,8 @@
 package org.example.ui;
 
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
@@ -11,7 +14,7 @@ public class ToolController {
     @FXML private VBox eraserIcon;
     @FXML private Canvas canvas;
 
-    private String activeTool = "cursor";
+    private StringProperty activeTool = new SimpleStringProperty("cursor");
 
     public ToolController() {
         System.out.println("ToolController создан");
@@ -19,7 +22,7 @@ public class ToolController {
 
     @FXML
     public void initialize() {
-        selectTool(activeTool);
+        selectTool(activeTool.get());
     }
 
     @FXML
@@ -38,26 +41,25 @@ public class ToolController {
     }
 
     @FXML
-    public void selectTool(String tool){
-        this.activeTool = tool;
+    public void selectTool(String  tool){
+        this.activeTool.set(tool);
         updateIconStyles();
         updateCanvasCursor();
         System.out.println("Active Tool (forced): " + activeTool);
     }
 
-    public String getActiveTool(){
-        return activeTool;
+    public String getActiveTool() {
+        return activeTool.get();
     }
 
     private void toggleTool(String tool) {
-        if (activeTool != null && activeTool.equals(tool)) {
-            activeTool = null;
+        if (activeTool.get() != null && activeTool.get().equals(tool)) {
+            activeTool.set(null);
         } else {
-            activeTool = tool;
+            activeTool.set(tool);
         }
         updateIconStyles();
         updateCanvasCursor();
-        System.out.println("Active Tool: " + activeTool);
     }
 
     private void updateIconStyles() {
@@ -65,8 +67,8 @@ public class ToolController {
         if (pencilIcon != null) pencilIcon.getStyleClass().remove("active");
         if (eraserIcon != null) eraserIcon.getStyleClass().remove("active");
 
-        if (activeTool != null && !activeTool.isEmpty()) {
-            switch (activeTool) {
+        if (activeTool != null && !activeTool.get().isEmpty()) {
+            switch (activeTool.get()) {
                 case "cursor":
                     if (cursorIcon != null) cursorIcon.getStyleClass().add("active");
                     break;
@@ -82,7 +84,7 @@ public class ToolController {
 
     private void updateCanvasCursor() {
         if (canvas != null) {
-            switch (activeTool) {
+            switch (activeTool.get()) {
                 case "cursor":
                     canvas.setStyle("-fx-cursor: default;");
                     break;
@@ -97,5 +99,8 @@ public class ToolController {
                     break;
             }
         }
+    }
+    public StringProperty  getActiveToolProperty() {
+        return activeTool;
     }
 }
