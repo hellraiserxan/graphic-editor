@@ -38,7 +38,7 @@ public class Main extends Application {
         splashStage.show();
 
 
-        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-view.fxml"));
@@ -46,7 +46,8 @@ public class Main extends Application {
 
                 Stage mainStage = new Stage();
                 Scene mainScene = new Scene(mainRoot, 660, 300);
-                mainScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                mainScene.getStylesheets().add(getClass().getResource("/styles/styles.css").toExternalForm());
+                mainScene.getStylesheets().add(getClass().getResource("/styles/menu-bar/pencil-settings.css").toExternalForm());
                 mainStage.initStyle(StageStyle.UNDECORATED);
                 mainStage.setWidth(1200.0);
                 mainStage.setHeight(800.0);

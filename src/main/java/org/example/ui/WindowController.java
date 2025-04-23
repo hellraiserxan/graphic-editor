@@ -2,8 +2,8 @@ package org.example.ui;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -24,7 +24,9 @@ public class WindowController {
         stage.setX(e.getScreenX() - xOffset);
         stage.setY(e.getScreenY() - yOffset);
     }
-    @FXML public void handleMaximizeButton(MouseEvent e) {
+
+    @FXML
+    public void handleMaximizeButton(MouseEvent e) {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         stage.setX(bounds.getMinX());
@@ -33,12 +35,14 @@ public class WindowController {
         stage.setHeight(bounds.getHeight());
     }
 
-    @FXML public void minimizeWindow(MouseEvent e) {
+    @FXML
+    public void minimizeWindow(MouseEvent e) {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
-    @FXML public void closeWindow(MouseEvent event) {
+    @FXML
+    public void closeWindow(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

@@ -9,7 +9,7 @@
         <VBox fx:id="cursorIcon" alignment="CENTER" onMouseClicked="#selectCursorTool" styleClass="tool-button" prefWidth="32.0">
             <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
                 <image>
-                    <Image url="@/Img/hand.png" />
+                    <Image url="/Img/hand.png" />
                 </image>
             </ImageView>
         </VBox>
@@ -25,7 +25,7 @@
         <VBox fx:id="eraserIcon" alignment="CENTER" onMouseClicked="#selectEraserTool" styleClass="tool-button" prefWidth="32.0">
             <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
                 <image>
-                    <Image url="@/Img/eraser.png" />
+                    <Image url="/Img/eraser.png" />
                 </image>
             </ImageView>
         </VBox>

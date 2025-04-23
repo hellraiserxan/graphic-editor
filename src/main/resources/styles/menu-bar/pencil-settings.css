@@ -1,0 +1,83 @@
+/* Стили для текста */
+.text {
+    -fx-text-fill: red; /* Исправлено свойство, вместо -fx-color */
+    -fx-font-size: 16px; /* Исправлено свойство для размера шрифта */
+}
+
+/* Стили для Spinner */
+.pencil-size-spinner {
+
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+}
+
+/* Стили для кнопки стрелки вниз */
+.show-slider-button {
+    -fx-background-color: green;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 5px;
+    -fx-pref-height: 5px;
+    -fx-text-fill: white;
+    -fx-font-size: 5px;
+}
+
+/* Стили для ползунка */
+.size-slider {
+
+    -fx-padding: 5;
+    -fx-pref-width: 120px;
+    -fx-max-width: 120px;
+}
+
+/* Убираем стрелки у Spinner */
+.pencil-size-spinner .increment-button,
+.pencil-size-spinner .decrement-button {
+    -fx-background-color: transparent;  /* Убираем фон */
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;  /* Убираем границу */
+    -fx-padding: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+/* Убираем стрелки */
+.pencil-size-spinner .increment-arrow,
+.pencil-size-spinner .decrement-arrow {
+    -fx-opacity: 0;  /* Делаем стрелки полностью прозрачными */
+    -fx-visible: false; /* Дополнительно скрываем стрелки */
+}
+
+.menu-bar{
+ -fx-background-color: #37393f;
+}
+
+.HBox{
+
+}
+
+.text-field{
+
+}
+.text-field-stack {
+    -fx-alignment: center-right;
+}
+
+.text-field {
+    -fx-background-radius: 5;
+    -fx-padding: 2 20 2 5; /* справа место под иконку */
+}
+
+.arrow-icon {
+    -fx-translate-x: -5;
+    -fx-opacity: 0.6;
+    -fx-cursor: hand;
+}
+
+.slider-pane {
+    -fx-padding: 5;
+    -fx-border-color: gray;
+    -fx-border-radius: 5;
+}

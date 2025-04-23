@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.HBox?>
-<HBox xmlns="http://javafx.com/javafx/21" prefHeight="50"
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<HBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.ui.topMenu.PencilSettingsController"
-      xmlns:fx="http://javafx.com/fxml/1" spacing="10.0"
+      fx:id="rootHBox"
+      spacing="10" alignment="CENTER_LEFT" prefHeight="50"
+      styleClass="menu-bar">
 
-      alignment="CENTER_LEFT">
+    <HBox styleClass="HBox">
+        <HBox.margin><Insets left="100"/></HBox.margin>
 
-    <Spinner fx:id="pencilSizeSpinner" min="5" max="100" initialValue="10" editable="true"/>
+        <Label styleClass="text" text="Размер:"/>
+
+        <StackPane fx:id="textFieldStack" prefWidth="100" styleClass="text-field-stack">
+
+            <TextField fx:id="sizeTextField"
+                       styleClass="text-field"
+                       prefWidth="60" maxWidth="60"
+                       promptText="10"
+                       focusTraversable="false"/>
+
+            <ImageView fx:id="arrowIcon"
+                       fitWidth="12" fitHeight="12"
+                       StackPane.alignment="CENTER_LEFT" pickOnBounds="false"
+                       styleClass="pencil-icon">
+                <image>
+                    <Image url="/Img/down-arrow.png"/>
+                </image>
+            </ImageView>
+
+            <VBox fx:id="sliderPane"
+                  visible="false" managed="false"
+                  styleClass="slider-pane"
+                  spacing="10">
+                <Slider fx:id="slider"
+                        min="5" max="100" value="10"
+                        styleClass="size-slider"
+                        translateY="40"/>
+            </VBox>
+        </StackPane>
+    </HBox>
 </HBox>

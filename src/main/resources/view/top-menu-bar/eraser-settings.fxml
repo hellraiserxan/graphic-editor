@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
 
 <HBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="50" fx:controller="org.example.ui.topMenu.EraserSettingsController" spacing="10.0" alignment="CENTER_LEFT">
-    <Spinner fx:id="eraserSizeSpinner" min="1" max="50" initialValue="3" editable="true"/>
+    <Label text="Размер:"/>
+    <Spinner fx:id="eraserSizeSpinner" min="1" max="50" initialValue="3" editable="true" />
+
 </HBox>
 

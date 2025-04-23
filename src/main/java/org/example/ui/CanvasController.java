@@ -28,7 +28,7 @@ public class CanvasController {
 
     private Line currentLine;
     private final List<Line> lines = new ArrayList<>();
-    private int eraserSize;
+    private double eraserSize = 10; // Установите начальный размер ластика
 
     public CanvasController() {
     }
@@ -63,7 +63,7 @@ public class CanvasController {
             double y = e.getY() / scale;
             switch (toolController.getActiveTool()) {
                 case "pencil":
-                    currentLine = new Line(Color.BLACK);
+                    currentLine = new Line(Color.BLACK, pencilSize);
                     lastX = x;
                     lastY = y;
                     gc.beginPath();
@@ -86,12 +86,12 @@ public class CanvasController {
 
         double x = e.getX() / scale;
         double y = e.getY() / scale;
-
+        System.out.println("Draw: scale=" + scale + ", pencilSize=" + pencilSize + ", lineWidth=" + (pencilSize / scale));
+        gc.setLineWidth(pencilSize);
         switch (toolController.getActiveTool()) {
             case "pencil":
                 currentLine.addPoint(lastX, lastY);
                 currentLine.addPoint(x, y);
-                gc.setLineWidth(pencilSize);
                 gc.lineTo(x, y);
                 gc.stroke();
                 lastX = x;
@@ -136,7 +136,7 @@ public class CanvasController {
     @FXML
     private void erase(double x, double y) {
         if (gc != null) {
-            double size = 10 / scale;
+            double size = eraserSize / scale; // Применяем масштаб к размеру ластика
             gc.setFill(Color.web("#9da1a4"));
             gc.fillRect(x - size / 2, y - size / 2, size, size);
         }
@@ -149,10 +149,11 @@ public class CanvasController {
             gc.setTransform(scale, 0, 0, scale, 0, 0);
             gc.clearRect(0, 0, width / scale, height / scale);
             setBackgroundColor("#9da1a4");
-            gc.setLineWidth(1.0 / scale);
+            gc.setLineWidth(1.0 / scale); // Масштабирование толщины сетки (если есть)
 
             for (Line line : lines) {
                 gc.setStroke(line.getColor());
+                gc.setLineWidth(line.getThickness());
                 List<Point> points = line.getPoints();
                 for (int i = 1; i < points.size(); i++) {
                     Point p1 = points.get(i - 1);
@@ -182,7 +183,7 @@ public class CanvasController {
             System.out.println("Размер кисти установлен: " + size);
         }
     }
-        public void setEraserSize(int eraserSize) {
-            this.eraserSize = eraserSize;
-        }
+    public void setEraserSize(int eraserSize) {
+        this.eraserSize = eraserSize;
+    }
 }

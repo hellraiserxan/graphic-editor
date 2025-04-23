@@ -1,18 +1,19 @@
 package org.example.ui;
 
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.example.ui.topMenu.PencilSettingsController;
 
 public class ToolController {
     @FXML private VBox cursorIcon;
     @FXML private VBox pencilIcon;
     @FXML private VBox eraserIcon;
     @FXML private Canvas canvas;
+    private PencilSettingsController pencilSettingsController; // Ссылка на контроллер для настроек карандаша
 
     private StringProperty activeTool = new SimpleStringProperty("cursor");
 
@@ -25,23 +26,31 @@ public class ToolController {
         selectTool(activeTool.get());
     }
 
+    // Устанавливаем PencilSettingsController
+    public void setPencilSettingsController(PencilSettingsController pencilSettingsController) {
+        this.pencilSettingsController = pencilSettingsController;
+    }
+
     @FXML
     public void selectCursorTool(MouseEvent e) {
-        toggleTool("cursor");
+        selectTool("cursor");
     }
 
     @FXML
     public void selectPencilTool(MouseEvent e) {
-        toggleTool("pencil");
+        selectTool("pencil");
+        if (pencilSettingsController != null) {
+            pencilSettingsController.hideSlider(); // Скрываем слайдер, если выбран карандаш
+        }
     }
 
     @FXML
     public void selectEraserTool(MouseEvent e) {
-        toggleTool("eraser");
+        selectTool("eraser");
     }
 
     @FXML
-    public void selectTool(String  tool){
+    public void selectTool(String tool) {
         this.activeTool.set(tool);
         updateIconStyles();
         updateCanvasCursor();
@@ -52,22 +61,12 @@ public class ToolController {
         return activeTool.get();
     }
 
-    private void toggleTool(String tool) {
-        if (activeTool.get() != null && activeTool.get().equals(tool)) {
-            activeTool.set(null);
-        } else {
-            activeTool.set(tool);
-        }
-        updateIconStyles();
-        updateCanvasCursor();
-    }
-
     private void updateIconStyles() {
         if (cursorIcon != null) cursorIcon.getStyleClass().remove("active");
         if (pencilIcon != null) pencilIcon.getStyleClass().remove("active");
         if (eraserIcon != null) eraserIcon.getStyleClass().remove("active");
 
-        if (activeTool != null && !activeTool.get().isEmpty()) {
+        if (activeTool != null && activeTool.get() != null && !activeTool.get().isEmpty()) {
             switch (activeTool.get()) {
                 case "cursor":
                     if (cursorIcon != null) cursorIcon.getStyleClass().add("active");
@@ -95,12 +94,13 @@ public class ToolController {
                     canvas.setStyle("-fx-cursor: crosshair");
                     break;
                 default:
-                    canvas.setStyle("-fx-cursor: default;"); // если null и что-то еще
+                    canvas.setStyle("-fx-cursor: default;");
                     break;
             }
         }
     }
-    public StringProperty  getActiveToolProperty() {
+
+    public StringProperty getActiveToolProperty() {
         return activeTool;
     }
 }
