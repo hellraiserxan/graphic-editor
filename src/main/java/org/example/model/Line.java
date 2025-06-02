@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Line {
     private final List<Point> points;
-    private final Color color;
+    private  Color color;
     private double thickness;
 
     public Line(Color color, double thickness) {

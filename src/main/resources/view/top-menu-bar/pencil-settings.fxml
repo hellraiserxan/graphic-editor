@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
+<?import javafx.scene.control.ColorPicker?>
 <HBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.ui.topMenu.PencilSettingsController"
@@ -48,5 +49,8 @@
                         translateY="40"/>
             </VBox>
         </StackPane>
+        <ColorPicker fx:id="colorPicker"
+                     styleClass = "color-picker"
+        />
     </HBox>
 </HBox>

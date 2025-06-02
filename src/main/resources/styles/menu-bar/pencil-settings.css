@@ -1,10 +1,4 @@
-/* Стили для текста */
-.text {
-    -fx-text-fill: "#7289da"; /* Исправлено свойство, вместо -fx-color */
-    -fx-font-size: 16px; /* Исправлено свойство для размера шрифта */
-    -fx-font-family:  "Open Sans", sans-serif;
 
-}
 
 /* Стили для Spinner */
 .pencil-size-spinner {
@@ -74,4 +68,14 @@
     -fx-padding: 5;
     -fx-border-color: gray;
     -fx-border-radius: 5;
+}
+
+.color-picker{
+    -fx-background-color: "#2C2F33";
+    -fx-pref-width: 150px;
+    -fx-pref-height: 40px;
+
+}
+.color-picker .label{
+    -fx-text-fill: #FFFFFF;
 }

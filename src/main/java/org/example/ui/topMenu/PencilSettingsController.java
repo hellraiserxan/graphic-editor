@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.scene.control.ColorPicker;
 import org.example.ui.CanvasController;
 
 public class PencilSettingsController {
