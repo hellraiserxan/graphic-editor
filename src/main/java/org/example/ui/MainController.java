@@ -72,6 +72,7 @@ public class MainController {
                         loader.setLocation(getClass().getResource("/view/top-menu-bar/eraser-settings.fxml"));
                         settingsNode = loader.load();
                         EraserSettingsController eraserController = loader.getController();
+                        eraserController.setCanvasController(drawingCanvasController);
                         controller = eraserController;
                         break;
                     case "cursor":

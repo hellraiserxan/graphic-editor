@@ -17,22 +17,22 @@
       styleClass="menu-bar">
 
     <HBox styleClass="HBox">
-        <HBox.margin><Insets left="100"/></HBox.margin>
+        <HBox.margin><Insets left="40"/></HBox.margin>
 
-        <Label styleClass="text" text="Размер:"/>
-
-        <StackPane fx:id="textFieldStack" prefWidth="100" styleClass="text-field-stack">
+        <StackPane fx:id="textFieldStack" prefWidth="80" styleClass="text-field-stack">
 
             <TextField fx:id="sizeTextField"
                        styleClass="text-field"
                        prefWidth="60" maxWidth="60"
                        promptText="10"
-                       focusTraversable="false"/>
+                       focusTraversable="false"
+                       StackPane.alignment="CENTER"
+            />
 
             <ImageView fx:id="arrowIcon"
                        fitWidth="12" fitHeight="12"
                        StackPane.alignment="CENTER_LEFT" pickOnBounds="false"
-                       styleClass="pencil-icon">
+                       styleClass="arrow-icon">
                 <image>
                     <Image url="/Img/down-arrow.png"/>
                 </image>

@@ -183,7 +183,8 @@ public class CanvasController {
             System.out.println("Размер кисти установлен: " + size);
         }
     }
-    public void setEraserSize(int eraserSize) {
-        this.eraserSize = eraserSize;
+    public void setEraserSize(Integer size) {
+        this.eraserSize = size;
+        System.out.println("Размер ластика установлен: " + size);
     }
 }

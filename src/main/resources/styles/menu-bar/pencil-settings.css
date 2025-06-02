@@ -1,7 +1,9 @@
 /* Стили для текста */
 .text {
-    -fx-text-fill: red; /* Исправлено свойство, вместо -fx-color */
+    -fx-text-fill: "#7289da"; /* Исправлено свойство, вместо -fx-color */
     -fx-font-size: 16px; /* Исправлено свойство для размера шрифта */
+    -fx-font-family:  "Open Sans", sans-serif;
+
 }
 
 /* Стили для Spinner */
@@ -44,36 +46,28 @@
 }
 
 /* Убираем стрелки */
-.pencil-size-spinner .increment-arrow,
-.pencil-size-spinner .decrement-arrow {
-    -fx-opacity: 0;  /* Делаем стрелки полностью прозрачными */
-    -fx-visible: false; /* Дополнительно скрываем стрелки */
-}
+
 
 .menu-bar{
  -fx-background-color: #37393f;
 }
 
-.HBox{
 
-}
-
-.text-field{
-
-}
 .text-field-stack {
     -fx-alignment: center-right;
 }
 
 .text-field {
     -fx-background-radius: 5;
-    -fx-padding: 2 20 2 5; /* справа место под иконку */
+    -fx-padding: 2 20 2 5;
+    -fx-cursor: hand;
 }
 
 .arrow-icon {
-    -fx-translate-x: -5;
-    -fx-opacity: 0.6;
+    -fx-translate-x: 55;
     -fx-cursor: hand;
+    -fx-opacity: 0.6;
+
 }
 
 .slider-pane {

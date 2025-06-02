@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.example.ui.topMenu.EraserSettingsController;
 import org.example.ui.topMenu.PencilSettingsController;
 
 public class ToolController {
@@ -14,7 +15,6 @@ public class ToolController {
     @FXML private VBox eraserIcon;
     @FXML private Canvas canvas;
     private PencilSettingsController pencilSettingsController; // Ссылка на контроллер для настроек карандаша
-
     private StringProperty activeTool = new SimpleStringProperty("cursor");
 
     public ToolController() {
@@ -30,6 +30,7 @@ public class ToolController {
     public void setPencilSettingsController(PencilSettingsController pencilSettingsController) {
         this.pencilSettingsController = pencilSettingsController;
     }
+
 
     @FXML
     public void selectCursorTool(MouseEvent e) {
