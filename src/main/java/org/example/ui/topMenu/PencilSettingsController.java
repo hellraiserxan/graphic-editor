@@ -3,6 +3,8 @@ package org.example.ui.topMenu;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -12,8 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import javafx.scene.control.ColorPicker;
+
 import org.example.ui.CanvasController;
+
+
 
 public class PencilSettingsController {
     @FXML private ImageView pencilIcon;
@@ -25,14 +29,16 @@ public class PencilSettingsController {
     @FXML private HBox rootHBox;
     private boolean sliderVisible = false;
     private boolean isInteractingWithSlider = false;
-
+    @FXML private ColorPicker colorPicker;
     public PencilSettingsController() {}
 
     public void setCanvasController(CanvasController canvasController) {
         this.canvasController = canvasController;
         try {
             int initialSize = Integer.parseInt(sizeTextField.getText());
+            Color initColor = colorPicker.getValue();
             this.canvasController.setPencilSize(initialSize);
+            this.canvasController.setColor(initColor);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -68,6 +74,11 @@ public class PencilSettingsController {
             }
         });
 
+        colorPicker.valueProperty().addListener((obs,oldVal,newVal)->{
+            if(canvasController != null){
+                canvasController.setColor(newVal);
+            }
+        });
         // Показ ползунка при клике на TextField
         sizeTextField.setOnMouseClicked(this::handleShowSlider);
 
@@ -179,4 +190,5 @@ public class PencilSettingsController {
             event.consume(); // Предотвращаем дальнейшую обработку события
         }
     }
+
 }

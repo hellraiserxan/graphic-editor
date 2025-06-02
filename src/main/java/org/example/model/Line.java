@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Line {
     private final List<Point> points;
-    private  Color color;
+    private final Color color;
     private double thickness;
 
     public Line(Color color, double thickness) {
@@ -34,4 +34,5 @@ public class Line {
     public void setThickness(double thickness) {
         this.thickness = thickness;
     }
+
 }

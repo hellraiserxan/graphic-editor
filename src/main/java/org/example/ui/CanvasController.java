@@ -19,6 +19,7 @@ public class CanvasController {
     private ToolController toolController;
     private GraphicsContext gc;
     private double pencilSize = 3;
+    private Color color;
     private double scale = 1;
     private final double scaleIncrement = 0.05;
     private double deltaX = 0;
@@ -63,7 +64,8 @@ public class CanvasController {
             double y = e.getY() / scale;
             switch (toolController.getActiveTool()) {
                 case "pencil":
-                    currentLine = new Line(Color.BLACK, pencilSize);
+                    gc.setStroke(color);
+                    currentLine = new Line(color, pencilSize);
                     lastX = x;
                     lastY = y;
                     gc.beginPath();
@@ -90,6 +92,7 @@ public class CanvasController {
         gc.setLineWidth(pencilSize);
         switch (toolController.getActiveTool()) {
             case "pencil":
+                gc.setStroke(color);
                 currentLine.addPoint(lastX, lastY);
                 currentLine.addPoint(x, y);
                 gc.lineTo(x, y);
@@ -186,5 +189,10 @@ public class CanvasController {
     public void setEraserSize(Integer size) {
         this.eraserSize = size;
         System.out.println("Размер ластика установлен: " + size);
+    }
+    public void setColor(Color color){
+        this.color = color;
+        gc.setStroke(this.color);
+        System.out.println("Цвет установлен: " + color);
     }
 }
