@@ -3,6 +3,7 @@ package org.example.ui;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,11 +27,12 @@ public class CanvasController {
     private double deltaY = 0; // Сдвиг по Y (панорамирование)
     private boolean isDrawing = false;
     private double lastX, lastY;
-
+    private boolean isPanning = false;
+    private double panStartX, panStartY;
     private Line currentLine;
-    private final List<Line> lines = new ArrayList<>(); // Здесь будут храниться ВСЕ линии, включая "стертые"
+    private final List<Line> lines = new ArrayList<>();
     private double eraserSize = 10;
-    private Color backgroundColor = Color.web("#9da1a4"); // Цвет фона, теперь не final, если может меняться
+    private Color backgroundColor = Color.web("#9da1a4");
 
     public CanvasController() {
     }
@@ -60,31 +62,36 @@ public class CanvasController {
 
     @FXML
     public void startDrawing(MouseEvent e) {
+        if (e.getButton() == MouseButton.SECONDARY || (toolController != null && ("cursor".equals(toolController.getActiveTool())))) {
+            isPanning = true;
+            panStartX = e.getX();
+            panStartY = e.getY();
+            return;
+        }
         if (toolController != null && gc != null) {
-            // Преобразуем экранные координаты мыши в координаты канваса
-            // Учитываем сдвиг (deltaX, deltaY) и масштаб (scale)
+
             double x = (e.getX() - deltaX) / scale;
             double y = (e.getY() - deltaY) / scale;
 
             switch (toolController.getActiveTool()) {
                 case "pencil":
-                    gc.setStroke(color); // Устанавливаем текущий цвет карандаша
-                    gc.setLineWidth(pencilSize); // Устанавливаем текущий размер карандаша
-                    currentLine = new Line(color, pencilSize); // Создаем новую линию с цветом и размером карандаша
-                    lastX = x; // Храним преобразованные координаты
-                    lastY = y; // Храним преобразованные координаты
-                    gc.beginPath(); // Начинаем новый путь рисования
-                    gc.moveTo(lastX, lastY); // Перемещаем перо в начальную точку
+                    gc.setStroke(color);
+                    gc.setLineWidth(pencilSize);
+                    currentLine = new Line(color, pencilSize);
+                    lastX = x;
+                    lastY = y;
+                    gc.beginPath();
+                    gc.moveTo(lastX, lastY);
                     isDrawing = true;
                     break;
                 case "eraser":
-                    gc.setStroke(backgroundColor); // Устанавливаем цвет фона для ластика
-                    gc.setLineWidth(eraserSize); // Устанавливаем размер ластика
-                    currentLine = new Line(backgroundColor, eraserSize); // Создаем новую линию для ластика
-                    lastX = x; // Храним преобразованные координаты
-                    lastY = y; // Храним преобразованные координаты
-                    gc.beginPath(); // Начинаем новый путь рисования
-                    gc.moveTo(lastX, lastY); // Перемещаем перо в начальную точку
+                    gc.setStroke(backgroundColor);
+                    gc.setLineWidth(eraserSize);
+                    currentLine = new Line(backgroundColor, eraserSize);
+                    lastX = x;
+                    lastY = y;
+                    gc.beginPath();
+                    gc.moveTo(lastX, lastY);
                     isDrawing = true;
                     break;
             }
@@ -93,6 +100,19 @@ public class CanvasController {
 
     @FXML
     public void draw(MouseEvent e) {
+        if (isPanning) {
+            double dx = e.getX() - panStartX;
+            double dy = e.getY() - panStartY;
+
+            deltaX += dx;
+            deltaY += dy;
+
+            panStartX = e.getX();
+            panStartY = e.getY();
+
+            redraw();
+            return;
+        }
         if (!isDrawing || gc == null || toolController == null) return;
 
         double x = (e.getX() - deltaX) / scale;
@@ -125,6 +145,10 @@ public class CanvasController {
 
     @FXML
     public void endDrawing(MouseEvent e) {
+        if (isPanning) {
+            isPanning = false;
+            return;
+        }
         isDrawing = false;
         if (gc != null) gc.closePath();
         if (currentLine != null) {
